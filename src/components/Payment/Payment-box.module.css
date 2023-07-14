@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+}
+
+.paymentBox {
+    width: 35%;
+    border: 1px solid red;
+    padding: 2.5vh 1.5vw;
+    font-family: 'Roboto';
+    display: flex;
+    flex-direction: column;
+    gap: 2.5vh;
+}
+
+.upperBtns {
+    display: flex;
+    justify-content: space-around;
+}
+
+.topBtn {
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+}
+
+.topBtn h2 {
+    width: 45px;
+    height: 35px;
+    border-radius: 50%;
+    color: white;
+    background: #0096FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plans {
+    text-align: center;
+}
+
+.subHeading {
+    font-weight: 600;
+    color: #3C4852;
+    font-size: 1rem;
+    margin-bottom: 1.5vh;
+}
+
+.planOne {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.2vh;
+    cursor: pointer;
+}
+
+.planOne:hover {
+    border: 3px solid green;
+}
+
+.planLeftSide {
+    display: flex;
+    gap: .5vw;
+    font-weight: 600;
+    color: #3C4852;
+    font-size: 1.1rem;
+}
+
+.planRightSide p {
+    font-weight: 400;
+    font-size: .9rem;
+}
+
+.subMPrice {
+    font-weight: 600;
+    color: #3C4852;
+}
+
+.permonth {
+    font-weight: 500;
+    color: #BEBEBE;
+}
+
+.planOne {
+    border: 2px solid grey;
+    border-radius: 2px;
+    padding: 1vh .75vw;
+    align-items: center;
+}
+
+/* cal */
+
+.calculationBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2vh;
+    border-top: 2px solid grey;
+}
+
+.subscriptionFee,
+.allTotal {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.2vh;
+    padding: 0 .75vw;
+
+}
+
+.offerTag {
+    border: 2px solid #DE4313;
+    padding: 1vh .75vw;
+    border-radius: 5px;
+}
+
+.offerprice {
+    display: flex;
+    color: #DE4313;
+    font-weight: 600;
+    justify-content: space-between;
+}
+
+.offerValidity {
+    display: flex;
+    gap: .5vw;
+    align-items: center;
+}
+
+.offerValidity p {
+    color: #DE4313;
+}
+
+.allTotal p {
+    font-weight: 600;
+}
+
+.allTotal span {
+    font-weight: 400;
+}
+
+.allTotal h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #3C4852;
+}
+
+.paymentBtns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.paymentBtns button {
+    width: 45%;
+    border-radius: 2px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 1.2vh 0;
+}
+
+.cancelPayment {
+    border: 2px solid #F77171;
+    color: #F77171;
+}
+
+.procedPayment {
+    color: #fff;
+    border: 2px solid #47BA68;
+    background-color: #47BA68;
+}

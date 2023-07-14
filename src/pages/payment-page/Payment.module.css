@@ -1,0 +1,45 @@
+.mainContainer {
+    width: 100%;   
+    display: flex;
+}
+
+.containerFront {
+    /* position: relative; */
+    display: flex;
+    justify-content: space-between;
+    padding: 4vh 5vw;
+}
+
+.containerBack {
+    width: 100%;
+    height: 92%;
+    position: absolute;
+}
+
+.containerBack img {
+    width: 100%;
+}
+
+.courseFeatures {
+    width: 51%;
+    font-family: 'Roboto';
+}
+
+.courseFeatures span {
+    color: #0096FF;
+    font-weight: 600;
+}
+.courseFeatures p{
+    font-weight: 500;
+}
+ul {
+    list-style: none;
+    margin-top: 3vh;
+}
+
+h1 {
+    font-family: 'Raleway';
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
