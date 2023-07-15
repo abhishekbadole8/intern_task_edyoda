@@ -1,6 +1,5 @@
 header {
     width: 100%;
-  
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +28,6 @@ header {
     padding-left: 2.5vw;
 }
 
-
 /* Right  */
 .rightSide {
     display: flex;
@@ -38,12 +36,11 @@ header {
 
 .inputBox img {
     width: 1vw;
-
 }
 
 .buttons button {
     width: 7vw;
-    font-size: .70rem;
+    font-size: .75rem;
     font-family: 'Roboto';
     font-weight: 600;
     border: none;

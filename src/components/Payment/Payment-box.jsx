@@ -1,15 +1,31 @@
 import styles from "./Payment-box.module.css"
 import expiryclock from "../../assets/Icon Clock.svg"
+import tickRadio from "../../assets/tick-radio.svg"
+import blankRadio from "../../assets/Radio Button.png"
+import disRadio from "../../assets/dis-radio.png"
 import paymentCompanyLogo from "../../assets/Razorpay Icon.svg"
 import { useState } from "react"
 
 
 function PaymentBox() {
 
-    const [selectedPlan, setSelectedPlan] = useState(null)
-    const [total, setTotal] = useState(0)
+    const [selectedPlan, setSelectedPlan] = useState(12)
+    const [total, setTotal] = useState(179)
 
-    
+    const plansArray = [
+        { month: 12, price: 99, permonth: 8, valid: false },
+        { month: 12, price: 179, permonth: 15, valid: true },
+        { month: 6, price: 149, permonth: 25, valid: true },
+        { month: 3, price: 99, permonth: 33, valid: true },
+    ]
+
+    const handleSelectedPlan = (plan, price) => {
+        setSelectedPlan(plan)
+        setTotal(price)
+    }
+
+    const calculation = new Intl.NumberFormat().format(18500 - total)
+
     return (
         <div className={styles.paymentBox}>
 
@@ -31,49 +47,46 @@ function PaymentBox() {
 
                 <h5 className={styles.subHeading}>Select Your Subscription plan</h5>
 
-                <div className={styles.planOne} >
-                    <div className={styles.planLeftSide}>
-                        <input type="radio" />
-                        <h5>12 Months Subscription</h5>
-                    </div>
-                    <div className={styles.planRightSide}>
-                        <p>Total <span className={styles.subMPrice}> ₹99</span></p>
-                        <p>₹8 <span className={styles.permonth}>/mo</span> </p>
-                    </div>
-                </div>
+                {plansArray.map((plan, index) => {
 
-                <div className={styles.planOne} >
-                    <div className={styles.planLeftSide}>
-                        <input type="radio" />
-                        <h5>12 Months Subscription</h5>
-                    </div>
-                    <div className={styles.planRightSide}>
-                        <p>Total <span className={styles.subMPrice}> ₹179</span></p>
-                        <p>₹15 <span className={styles.permonth}>/mo</span> </p>
-                    </div>
-                </div>
+                    const { month, price, permonth, valid } = plan // Destructure
 
-                <div className={styles.planOne}>
-                    <div className={styles.planLeftSide}>
-                        <input type="radio" />
-                        <h5>6 Months Subscription</h5>
-                    </div>
-                    <div className={styles.planRightSide}>
-                        <p>Total <span className={styles.subMPrice}> ₹149</span></p>
-                        <p>₹25 <span className={styles.permonth}>/mo</span> </p>
-                    </div>
-                </div>
+                    return (
+                        <div className={styles.head}>
 
-                <div className={styles.planOne}>
-                    <div className={styles.planLeftSide}>
-                        <input type="radio" />
-                        <h5>3 Months Subscription</h5>
-                    </div>
-                    <div className={styles.planRightSide}>
-                        <p>Total <span className={styles.subMPrice}> ₹99</span></p>
-                        <p>₹33 <span className={styles.permonth}>/mo</span> </p>
-                    </div>
-                </div>
+                            {month == 12 && valid ?
+                                <div className={styles.recTag}>
+                                    <p>Recommended</p>
+                                </div> : ""}
+
+                            {!valid ?
+                                <div className={styles.expTag}>
+                                    <p>Offer Expired</p>
+                                </div> : ""}
+
+
+                            <div className={`${styles.planOne} ${selectedPlan == month && valid ? styles.selectedPlan : ""} ${!valid && styles.inActivePlan}`}
+                                onClick={() => { valid && handleSelectedPlan(month, price) }} key={index}>
+
+                                <div className={styles.planLeftSide}>
+
+                                    {(!valid && disRadio) ? <img src={disRadio} alt="" /> :
+                                        <img src={month == selectedPlan ? tickRadio : blankRadio} alt="" />}
+
+                                    <h5>{month} Months Subscription</h5>
+                                </div>
+
+                                <div className={styles.planRightSide}>
+                                    <p>Total <span className={styles.subMPrice}> ₹{price}</span></p>
+                                    <p>₹{permonth} <span className={styles.permonth}>/mo</span> </p>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    )
+                })}
 
 
             </div>
@@ -88,7 +101,7 @@ function PaymentBox() {
                 <div className={styles.offerTag}>
                     <div className={styles.offerprice}>
                         <p>Limited time offer</p>
-                        <h5>- ₹18,500</h5>
+                        <h5>- ₹{calculation}</h5>
                     </div>
 
                     <div className={styles.offerValidity}>
@@ -99,7 +112,7 @@ function PaymentBox() {
 
                 <div className={styles.allTotal}>
                     <p>Total <span> (Incl. of 18% GST)</span></p>
-                    <h4>₹149</h4>
+                    <h4>₹{total}</h4>
                 </div>
 
             </div>
@@ -112,6 +125,7 @@ function PaymentBox() {
             <div className={styles.paymentCompanyLogo}>
                 <img src={paymentCompanyLogo} alt="" />
             </div>
+
 
         </div>
     )
